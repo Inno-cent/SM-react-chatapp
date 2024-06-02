@@ -7,10 +7,8 @@ function Login() {
     <>
       <div className="firstly flex h-screen items-center justify-center">
         <form className=" px-6 py-2  space-y-3 w-96">
-          <h1 className="text-2xl text-center">
-            Chat<span className="text-green-500 font-semibold">App</span>
-          </h1>
-          <h2 className="text-4xl text-white font-bold">Login</h2>
+        
+          <h2 className="text-4xl text-white text-green-500 font-bold">Login</h2>
           <br />
 
           {/* Email */}
@@ -66,7 +64,7 @@ function Login() {
             <input
               type="submit"
               value="Login"
-              className="text-white bg-green-500 px-2 py-1 cursor-pointer rounded-lg"
+              className="text-white bg-green-500 px-8 py-2 cursor-pointer rounded-lg"
             />
           </div>
         </form>
