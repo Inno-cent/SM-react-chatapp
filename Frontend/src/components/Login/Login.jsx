@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./login.scss"
 
 function Login() {
   return (
     <>
-      <div className="flex h-screen items-center justify-center">
-        <form className="border border-white px-6 py-2 rounded-md space-y-3 w-96">
-          <h1 className="text-2xl text-center">
-            Chat<span className="text-green-500 font-semibold">App</span>
-          </h1>
+      <div className="firstly flex h-screen items-center justify-center">
+        <form className=" px-6 py-2  space-y-3 w-96">
+         
           <h2 className="text-xl text-white font-bold">Login</h2>
           <br />
 
@@ -23,12 +22,7 @@ function Login() {
               <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
               <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
             </svg>
-            <input
-              type="text"
-              className="grow"
-              placeholder="Email"
-              {...register("email", { required: true })}
-            />
+            <input type="text" className="grow" placeholder="Email" />
           </label>
           {/* {errors.email && (
             <span className="text-red-500 text-sm font-semibold">
@@ -49,12 +43,7 @@ function Login() {
                 clipRule="evenodd"
               />
             </svg>
-            <input
-              type="password"
-              className="grow"
-              placeholder="password"
-              {...register("password", { required: true })}
-            />
+            <input type="password" className="grow" placeholder="password" />
           </label>
           {/* {errors.password && (
             <span className="text-red-500 text-sm font-semibold">
