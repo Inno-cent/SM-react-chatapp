@@ -7,8 +7,10 @@ function Login() {
     <>
       <div className="firstly flex h-screen items-center justify-center">
         <form className=" px-6 py-2  space-y-3 w-96">
-         
-          <h2 className="text-xl text-white font-bold">Login</h2>
+          <h1 className="text-2xl text-center">
+            Chat<span className="text-green-500 font-semibold">App</span>
+          </h1>
+          <h2 className="text-4xl text-white font-bold">Login</h2>
           <br />
 
           {/* Email */}
