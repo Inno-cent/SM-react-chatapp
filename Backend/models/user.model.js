@@ -19,3 +19,5 @@ const userSchema = mongoose.Schema({
     },
 }, { timestamps: true }); // createdAt & updatedAt
 
+const User = mongoose.model("User", userSchema);
+export default User;
