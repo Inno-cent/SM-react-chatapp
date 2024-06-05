@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
-import CTASC from "../jwt/generateToken.js";
+import CTASC from "../jwt/createToken.js";
 
 export const signup = async (req, res) => {
   const { fullname, email, password, confirmPassword } = req.body;
@@ -37,10 +37,18 @@ export const signup = async (req, res) => {
         },
       });
     }
-  } catch(error) {
-    console.log(error)
+  } catch (error) {
+    console.log(error);
     res.status(500).json({
-        message: "Internal server error"
-    })
+      message: "Internal server error",
+    });
   }
+};
+
+export const login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    const isMatch = await bcrypt.compare(password, user.password);
+  } catch {}
 };

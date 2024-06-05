@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import userRoute from "./routes/user.js";
 
 dotenv.config();
 
@@ -23,6 +24,8 @@ mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB connected successfully"))
   .catch((error) => console.error("MongoDB connection error:", error));
+
+app.use("/api/user", userRoute);
 
 const PORT = process.env.PORT || 2121;
 app.listen(PORT, () => {
