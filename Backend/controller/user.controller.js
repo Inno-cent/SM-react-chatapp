@@ -66,5 +66,8 @@ export const login = async (req, res) => {
         email: user.email,
       },
     });
-  } catch {}
+  } catch(err) {
+    console.log(err);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
