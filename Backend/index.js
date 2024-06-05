@@ -12,13 +12,17 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  throw new Error("The MONGODB_URI environment variable is not set.");
+}
+
+// Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log(err));
+  .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB connected successfully"))
+  .catch((error) => console.error("MongoDB connection error:", error));
 
 const PORT = process.env.PORT || 2121;
 app.listen(PORT, () => {
