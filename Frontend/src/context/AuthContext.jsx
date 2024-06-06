@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
 
     const signup = async (email, password) => {
         try {
-            const response = await axios.post('/api/signup', { email, password });
+            const response = await axios.post('/api/user/signup', { email, password });
             setUser(response.data.user);
             localStorage.setItem('user', JSON.stringify(response.data.user));
         } catch (error) {
@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await axios.post('/api/login', { email, password });
+            const response = await axios.post('/api/user/login', { email, password });
             setUser(response.data.user);
             localStorage.setItem('user', JSON.stringify(response.data.user));
         } catch (error) {
