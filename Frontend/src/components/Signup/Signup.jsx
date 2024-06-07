@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 function Signup() {
+  const { signup } = useContext(AuthContext);
+  const [email, setEmail] = useState('');
+  const [fullname, setFullname] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    signup(email, password, fullname, confirmPassword);
+};
+
   return (
     <>
       <div className="flex h-screen items-center justify-center">
