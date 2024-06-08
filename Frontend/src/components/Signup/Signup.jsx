@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 // import { AuthContext } from "../../context/AuthContext";
 import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const Signup = () => {
-  const [authUser, setAuthUser] = useAuth();
-  // const { signup } = useContext(AuthContext);
-  // const [email, setEmail] = useState('');
-  // const [fullname, setFullname] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
+  const [, setAuthUser] = useAuth();
+  const [fullname, setFullname] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const onSubmit = async (data) => {
     const userInfo = {
@@ -56,8 +56,7 @@ const Signup = () => {
               type="text"
               className="grow"
               placeholder="Fullname"
-              value={fullname}
-              onChange={(e) => setFullname(e.target.value)}
+              
             />
           </label>
 
@@ -76,8 +75,7 @@ const Signup = () => {
               type="email"
               className="grow"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+           
             />
           </label>
 
@@ -99,8 +97,7 @@ const Signup = () => {
               type="password"
               className="grow"
               placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              
             />
           </label>
 
@@ -122,9 +119,7 @@ const Signup = () => {
               type="password"
               className="grow"
               placeholder="confirm password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
+           />
           </label>
 
           {/* Text & Button */}
