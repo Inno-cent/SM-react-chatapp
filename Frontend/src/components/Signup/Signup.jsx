@@ -8,10 +8,10 @@ import toast from "react-hot-toast";
 
 const Signup = () => {
   const [, setAuthUser] = useAuth();
-  const [fullname, setFullname] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   // const onSubmit = async (data) => {
   //   const userInfo = {
@@ -46,21 +46,21 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post('/api/user/signup', {
+      const response = await axios.post("/api/user/signup", {
         fullname,
         email,
         password,
-        confirmPassword
+        confirmPassword,
       });
 
       const { user, token } = response.data;
       setAuthUser(user);
-      Cookies.set('jwt', token);
-      localStorage.setItem('ChatApp', JSON.stringify(user));
-      toast.success('Signup successful!');
+      Cookies.set("jwt", token);
+      localStorage.setItem("ChatApp", JSON.stringify(user));
+      toast.success("Signup successful!");
     } catch (error) {
-      console.error('Signup error:', error);
-      toast.error('Signup failed. Please try again.');
+      console.error("Signup error:", error);
+      toast.error("Signup failed. Please try again.");
     }
   };
   return (
@@ -83,7 +83,8 @@ const Signup = () => {
               type="text"
               className="grow"
               placeholder="Fullname"
-              
+              value={fullname}
+              onChange={(e) => setFullname(e.target.value)}
             />
           </label>
 
@@ -102,7 +103,9 @@ const Signup = () => {
               type="email"
               className="grow"
               placeholder="Email"
-           
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </label>
 
@@ -123,8 +126,10 @@ const Signup = () => {
             <input
               type="password"
               className="grow"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
               placeholder="password"
-              
             />
           </label>
 
@@ -146,7 +151,10 @@ const Signup = () => {
               type="password"
               className="grow"
               placeholder="confirm password"
-           />
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
           </label>
 
           {/* Text & Button */}
