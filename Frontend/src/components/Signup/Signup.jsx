@@ -1,13 +1,9 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-// import { AuthContext } from "../../context/AuthContext";
-import { useAuth } from "../../context/AuthContext";
-import axios from "axios";
-import Cookies from "js-cookie";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 
 const Signup = () => {
-  const [, setAuthUser] = useAuth();
+  // const [, setAuthUser] = useAuth();
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,32 +33,7 @@ const Signup = () => {
   //     });
   // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
 
-    if (password !== confirmPassword) {
-      toast.error("Passwords do not match");
-      return;
-    }
-
-    try {
-      const response = await axios.post("/api/user/signup", {
-        fullname,
-        email,
-        password,
-        confirmPassword,
-      });
-
-      const { user, token } = response.data;
-      setAuthUser(user);
-      Cookies.set("jwt", token);
-      localStorage.setItem("ChatApp", JSON.stringify(user));
-      toast.success("Signup successful!");
-    } catch (error) {
-      console.error("Signup error:", error);
-      toast.error("Signup failed. Please try again.");
-    }
-  };
   return (
     <>
       <div className="flex h-screen items-center justify-center">
