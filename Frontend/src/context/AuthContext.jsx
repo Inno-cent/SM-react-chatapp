@@ -2,9 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 import Cookies from "js-cookie";
 export const AuthContext = createContext();
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
+
 
 
 export const AuthProvider = ({ children }) => {
@@ -20,6 +18,10 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
+};
+
+export const useAuth = () => {
+  return useContext(AuthContext);
 };
 
 // export const useAuth = () => useContext(AuthContext);

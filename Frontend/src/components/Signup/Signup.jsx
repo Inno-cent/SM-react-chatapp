@@ -1,9 +1,10 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-// import toast from "react-hot-toast";
+import axios from "axios"
+import toast from "react-hot-toast";
 
 const Signup = () => {
-  // const [, setAuthUser] = useAuth();
+  const [authUser, setAuthUser] = useAuth();
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,7 +38,7 @@ const Signup = () => {
   return (
     <>
       <div className="flex h-screen items-center justify-center">
-        <form className="bpx-6 py-2  space-y-3 w-96">
+        <form className="bpx-6 py-2  space-y-3 w-96" >
           <h2 className="text-2xl text-white font-bold">Signup</h2>
           <br />
           {/* Fullname */}
@@ -134,6 +135,7 @@ const Signup = () => {
               Have an account?
               <Link
                 to="/login"
+                onClick={onSubmit}
                 className="text-blue-500 underline cursor-pointer ml-1"
               >
                 Login
