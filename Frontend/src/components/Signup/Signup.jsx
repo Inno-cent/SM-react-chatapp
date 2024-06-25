@@ -5,35 +5,9 @@ import toast from "react-hot-toast";
 
 const Signup = () => {
   const [authUser, setAuthUser] = useAuth();
-  const [fullname, setFullname] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [form, setForm] = useState({ username: "", password: "" });
 
-  // const onSubmit = async (data) => {
-  //   const userInfo = {
-  //     fullname: data.fullname,
-  //     email: data.email,
-  //     password: data.password,
-  //     confirmPassword: data.confirmPassword,
-  //   };
-  //   // console.log(userInfo);
-  //   await axios
-  //     .post("/api/user/signup", userInfo)
-  //     .then((response) => {
-  //       if (response.data) {
-  //         toast.success("Signup successful");
-  //       }
-  //       localStorage.setItem("ChatApp", JSON.stringify(response.data));
-  //       setAuthUser(response.data);
-  //     })
-  //     .catch((error) => {
-  //       if (error.response) {
-  //         toast.error("Error: " + error.response.data.error);
-  //       }
-  //     });
-  // };
-
+  
 
   return (
     <>
