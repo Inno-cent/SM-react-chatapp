@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -28,8 +29,10 @@ const Signup = () => {
       if (data.token) {
         // Set the JWT token in cookies
         Cookies.set("jwt", data.token);
+
         // Set the user data in local storage
         localStorage.setItem("ChatApp", JSON.stringify(data.user));
+
         // Update the context state
         setAuthUser(data.user);
       }
