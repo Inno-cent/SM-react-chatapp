@@ -1,22 +1,51 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios"
+import axios from "axios";
 import toast from "react-hot-toast";
 
 const Signup = () => {
   const [authUser, setAuthUser] = useAuth();
-  const [form, setForm] = useState({ username: "", password: "" });
+  const [form, setForm] = useState({ username: "", password: "", email: "" });
 
-  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevForm) => ({ ...prevForm, [name]: value }));
+  };
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    try {
+      // Make an API request to sign up the user
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await response.json();
+      if (data.token) {
+        // Set the JWT token in cookies
+        Cookies.set("jwt", data.token);
+        // Set the user data in local storage
+        localStorage.setItem("ChatApp", JSON.stringify(data.user));
+        // Update the context state
+        setAuthUser(data.user);
+      }
+    } catch (error) {
+      console.error("Sign up error:", error);
+    }
+  };
 
   return (
     <>
       <div className="flex h-screen items-center justify-center">
-        <form className="bpx-6 py-2  space-y-3 w-96" >
+        <form className="bpx-6 py-2  space-y-3 w-96">
           <h2 className="text-2xl text-white font-bold">Signup</h2>
           <br />
           {/* Fullname */}
-          <label className="input input-bordered flex items-center gap-2">
+          {/* <label className="input input-bordered flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -31,6 +60,26 @@ const Signup = () => {
               placeholder="Fullname"
               value={fullname}
               onChange={(e) => setFullname(e.target.value)}
+            />
+          </label> */}
+
+          <label className="input input-bordered flex items-center gap-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              className="w-4 h-4 opacity-70"
+            >
+              <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+              <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
+            </svg>
+            <input
+              type="email"
+              className="grow"
+              placeholder="Email"
+              value={form.username}
+              onChange={handleChange}
+              required
             />
           </label>
 
@@ -49,8 +98,8 @@ const Signup = () => {
               type="email"
               className="grow"
               placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={form.email}
+              onChange={handleChange}
               required
             />
           </label>
@@ -72,15 +121,15 @@ const Signup = () => {
             <input
               type="password"
               className="grow"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={form.password}
+              onChange={handleChange}
               required
               placeholder="password"
             />
           </label>
 
           {/*Confirm Password */}
-          <label className="input input-bordered flex items-center gap-2">
+          {/* <label className="input input-bordered flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -101,7 +150,7 @@ const Signup = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-          </label>
+          </label> */}
 
           {/* Text & Button */}
           <div className="flex justify-between">
