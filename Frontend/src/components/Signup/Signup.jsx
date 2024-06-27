@@ -6,7 +6,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const Signup = () => {
-  // const { signup } = useContext(AuthContext);
+  const { signup } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
@@ -17,7 +17,7 @@ const Signup = () => {
   const { fullname, email, password, confirmPassword } = formData;
 
   const onChange = (e) =>
-    setFormData({ ...formData, [e.target.value]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -152,18 +152,20 @@ const Signup = () => {
             <div id="success-message" className="success-message">
               Success message here
             </div> */}
-            <h2 className="m2we433a">Sign Up</h2>
+            <h2 className="text-2xl text-white font-bold">Sign Up</h2>
 
-            <form className="space-y-5" id="signup-form">
+            <form className="space-y-5" id="signup-form"  onSubmit={onSubmit}>
               <div className="sw23edz">
                 <label>Full Name</label>
                 <input
                   className="form-input"
                   type="text"
                   required
-                  name="Full_name"
-                  placeholder="Full Name"
+                  name="fullname"
+                  placeholder="Jane doe"
                   id="full_name"
+                  value={fullname}
+                  onChange={onChange}
                 />
               </div>
 
@@ -176,6 +178,8 @@ const Signup = () => {
                   name="email"
                   placeholder="johnmark@gmail.com"
                   id="email"
+                  value={email}
+                  onChange={onChange}
                 />
               </div>
 
@@ -186,7 +190,7 @@ const Signup = () => {
                   type="password"
                   required
                   name="password"
-                  placeholder="**********"
+                  placeholder="*********"
                   id="password"
                 />
               </div>
@@ -197,7 +201,7 @@ const Signup = () => {
                   className="form-input"
                   type="password"
                   required
-                  name="password_confirmation"
+                  name="confirmPassword"
                   placeholder="*********"
                   id="password_confirmation"
                 />
@@ -216,7 +220,7 @@ const Signup = () => {
               </div>
             </div>
             <p className="text-center">
-              Already have an account? 
+              Already have an account?
               <a href="/" className="d23sacx">
                 Sign In
               </a>
