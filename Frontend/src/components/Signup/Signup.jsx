@@ -153,20 +153,19 @@ const Signup = () => {
               Success message here
             </div> */}
             <h2 className="m2we433a">Sign Up</h2>
-            <p className="we2eca2">Enter your email and password to register</p>
+
             <form className="space-y-5" id="signup-form">
               <div className="sw23edz">
-                <label>First Name</label>
+                <label>Full Name</label>
                 <input
                   className="form-input"
                   type="text"
                   required
-                  name="first_name"
-                  placeholder="First Name"
-                  id="first_name"
+                  name="Full_name"
+                  placeholder="Full Name"
+                  id="full_name"
                 />
               </div>
-
 
               <div className="sw23edz">
                 <label>Email</label>
@@ -182,21 +181,14 @@ const Signup = () => {
 
               <div className="sw23edz">
                 <label>Password</label>
-                <div className="er23ezx">
-                  <input
-                    className="form-input"
-                    type="password"
-                    required
-                    name="password"
-                    placeholder="*********"
-                    id="password"
-                  />
-                  <button
-                    type="button"
-                    className="veteqwer"
-                    id="toggle-password"
-                  ></button>
-                </div>
+                <input
+                  className="form-input"
+                  type="password"
+                  required
+                  name="password"
+                  placeholder="**********"
+                  id="password"
+                />
               </div>
 
               <div className="sw23edz">
@@ -211,23 +203,6 @@ const Signup = () => {
                 />
               </div>
 
-              <div className="form-group cursor-pointer">
-                <div className="flex">
-                  <div className="check-wrap">
-                    <input type="checkbox" name="agree" id="agree" />
-                  </div>
-                  <label className="sw223eds">
-                    I agree to the
-                    <a target="_blank" href="/" className="underline">
-                      Terms of Service
-                    </a>
-                    and
-                    <a target="_blank" href="/" className="underline">
-                      Privacy Policy
-                    </a>
-                  </label>
-                </div>
-              </div>
               <button type="submit" className="btn">
                 {/* <div id="loader" style="display: none;">
                   Loading...

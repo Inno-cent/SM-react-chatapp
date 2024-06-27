@@ -52,6 +52,9 @@
         .sw23edz {
           margin-top: calc(1.25rem * (1 - 0));
           margin-bottom: calc(1.25rem * 0);
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
         }
         .er23ezx {
           position: relative;
