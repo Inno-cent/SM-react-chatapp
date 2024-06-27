@@ -1,45 +1,22 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 const Signup = () => {
-  const [authUser, setAuthUser] = useAuth();
-  const [form, setForm] = useState({ username: "", password: "", email: "" });
+  const { signup } = useContext(AuthContext);
+  const [formData, setFormData] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prevForm) => ({ ...prevForm, [name]: value }));
-  };
-
-  const handleSignUp = async (e) => {
-    e.preventDefault();
-    try {
-      // Make an API request to sign up the user
-      const response = await fetch("/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
-
-      const data = await response.json();
-      if (data.token) {
-        // Set the JWT token in cookies
-        Cookies.set("jwt", data.token);
-
-        // Set the user data in local storage
-        localStorage.setItem("ChatApp", JSON.stringify(data.user));
-
-        // Update the context state
-        setAuthUser(data.user);
-      }
-    } catch (error) {
-      console.error("Sign up error:", error);
-    }
-  };
+  const { fullname, email, password, confirmPassword } = formData;
+  
+  
 
   return (
     <>
