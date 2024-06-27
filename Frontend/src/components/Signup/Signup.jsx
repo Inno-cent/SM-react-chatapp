@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import "./signup.scss";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 const Signup = () => {
-  const { signup } = useContext(AuthContext);
+  // const { signup } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
@@ -18,85 +19,67 @@ const Signup = () => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.value]: e.target.value });
 
-    const onSubmit = e => {
-      e.preventDefault();
-      signup(fullname, email, password, confirmPassword);
-      console.log(formData)
-    };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    signup(fullname, email, password, confirmPassword);
+    console.log(formData);
+  };
 
   return (
     <>
-      <div className="flex h-screen items-center justify-center">
-        <form className="bpx-6 py-2  space-y-3 w-96">
-          <h2 className="text-2xl text-white font-bold">Signup</h2>
+      {/* <div classNameName="flex h-screen items-center justify-center">
+        <form classNameName="bpx-6 py-2  space-y-3 w-96" onSubmit={onSubmit}>
+          <h2 classNameName="text-2xl text-white font-bold">Signup</h2>
           <br />
-          {/* Fullname */}
-          {/* <label className="input input-bordered flex items-center gap-2">
+
+          <label classNameName="input input-bordered flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               fill="currentColor"
-              className="w-4 h-4 opacity-70"
+              classNameName="w-4 h-4 opacity-70"
             >
-              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
+              <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+              <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
             </svg>
             <input
               type="text"
-              className="grow"
-              placeholder="Fullname"
+              classNameName="grow"
+              placeholder="Full name"
+              name="fullname"
               value={fullname}
-              onChange={(e) => setFullname(e.target.value)}
+              onChange={onChange}
+              required
             />
-          </label> */}
+          </label>
 
-          <label className="input input-bordered flex items-center gap-2">
+          <label classNameName="input input-bordered flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               fill="currentColor"
-              className="w-4 h-4 opacity-70"
+              classNameName="w-4 h-4 opacity-70"
             >
               <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
               <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
             </svg>
             <input
               type="email"
-              className="grow"
+              classNameName="grow"
               placeholder="Email"
-              value={form.username}
-              onChange={handleChange}
+              name="email"
+              value={email}
+              onChange={onChange}
               required
             />
           </label>
 
-          {/* Email */}
-          <label className="input input-bordered flex items-center gap-2">
+          <label classNameName="input input-bordered flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               fill="currentColor"
-              className="w-4 h-4 opacity-70"
-            >
-              <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
-              <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
-            </svg>
-            <input
-              type="email"
-              className="grow"
-              placeholder="Email"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-          </label>
-
-          {/* Password */}
-          <label className="input input-bordered flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              className="w-4 h-4 opacity-70"
+              classNameName="w-4 h-4 opacity-70"
             >
               <path
                 fillRule="evenodd"
@@ -106,21 +89,21 @@ const Signup = () => {
             </svg>
             <input
               type="password"
-              className="grow"
-              value={form.password}
-              onChange={handleChange}
+              classNameName="grow"
+              name="password"
+              value={password}
+              onChange={onChange}
               required
               placeholder="password"
             />
           </label>
 
-          {/*Confirm Password */}
-          {/* <label className="input input-bordered flex items-center gap-2">
+          <label classNameName="input input-bordered flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
               fill="currentColor"
-              className="w-4 h-4 opacity-70"
+              classNameName="w-4 h-4 opacity-70"
             >
               <path
                 fillRule="evenodd"
@@ -130,22 +113,22 @@ const Signup = () => {
             </svg>
             <input
               type="password"
-              className="grow"
+              classNameName="grow"
               placeholder="confirm password"
+              name="confirmPassword"
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={onChange}
               required
             />
-          </label> */}
+          </label>
 
-          {/* Text & Button */}
-          <div className="flex justify-between">
+          <div classNameName="flex justify-between">
             <p>
               Have an account?
               <Link
                 to="/login"
                 onClick={onSubmit}
-                className="text-blue-500 underline cursor-pointer ml-1"
+                classNameName="text-blue-500 underline cursor-pointer ml-1"
               >
                 Login
               </Link>
@@ -154,10 +137,117 @@ const Signup = () => {
             <input
               type="submit"
               value="Signup"
-              className="text-white bg-green-500 px-8 py-2 cursor-pointer rounded-lg"
+              classNameName="text-white bg-green-500 px-8 py-2 cursor-pointer rounded-lg"
             />
           </div>
         </form>
+      </div> */}
+
+      <div className="main-container">
+        <div className="inner-main">
+          <div className="de123ess">
+            {/* <div id="error-message" className="error-message">
+              Error message here
+            </div>
+            <div id="success-message" className="success-message">
+              Success message here
+            </div> */}
+            <h2 className="m2we433a">Sign Up</h2>
+            <p className="we2eca2">Enter your email and password to register</p>
+            <form className="space-y-5" id="signup-form">
+              <div className="sw23edz">
+                <label>First Name</label>
+                <input
+                  className="form-input"
+                  type="text"
+                  required
+                  name="first_name"
+                  placeholder="First Name"
+                  id="first_name"
+                />
+              </div>
+
+
+              <div className="sw23edz">
+                <label>Email</label>
+                <input
+                  className="form-input"
+                  type="email"
+                  required
+                  name="email"
+                  placeholder="johnmark@gmail.com"
+                  id="email"
+                />
+              </div>
+
+              <div className="sw23edz">
+                <label>Password</label>
+                <div className="er23ezx">
+                  <input
+                    className="form-input"
+                    type="password"
+                    required
+                    name="password"
+                    placeholder="*********"
+                    id="password"
+                  />
+                  <button
+                    type="button"
+                    className="veteqwer"
+                    id="toggle-password"
+                  ></button>
+                </div>
+              </div>
+
+              <div className="sw23edz">
+                <label>Confirm Password</label>
+                <input
+                  className="form-input"
+                  type="password"
+                  required
+                  name="password_confirmation"
+                  placeholder="*********"
+                  id="password_confirmation"
+                />
+              </div>
+
+              <div className="form-group cursor-pointer">
+                <div className="flex">
+                  <div className="check-wrap">
+                    <input type="checkbox" name="agree" id="agree" />
+                  </div>
+                  <label className="sw223eds">
+                    I agree to the
+                    <a target="_blank" href="/" className="underline">
+                      Terms of Service
+                    </a>
+                    and
+                    <a target="_blank" href="/" className="underline">
+                      Privacy Policy
+                    </a>
+                  </label>
+                </div>
+              </div>
+              <button type="submit" className="btn">
+                {/* <div id="loader" style="display: none;">
+                  Loading...
+                </div> */}
+                <div id="signup-text">SIGN UP</div>
+              </button>
+            </form>
+            <div className="f32sdxdw">
+              <div className="s23edfq">
+                <span>OR</span>
+              </div>
+            </div>
+            <p className="text-center">
+              Already have an account?
+              <a href="/" className="d23sacx">
+                Sign In
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     </>
   );
