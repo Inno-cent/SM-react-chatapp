@@ -1,7 +1,6 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import React, { useState, useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import toast from "react-hot-toast";
 
@@ -15,8 +14,15 @@ const Signup = () => {
   });
 
   const { fullname, email, password, confirmPassword } = formData;
-  
-  
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.value]: e.target.value });
+
+    const onSubmit = e => {
+      e.preventDefault();
+      signup(fullname, email, password, confirmPassword);
+      console.log(formData)
+    };
 
   return (
     <>
