@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
 
   const signup = async (fullname, email, password, confirmPassword) => {
     try {
-      const res = await axios.post('/api/auth/signup', {
+      const res = await axios.post('http://localhost:1818/api/auth/signup', {
         fullname,
         email,
         password,
