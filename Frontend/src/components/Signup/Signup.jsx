@@ -25,6 +25,15 @@ const Signup = () => {
     console.log(formData);
   };
 
+  //  const password = watch("password", "");
+  //  const confirmPassword = watch("confirmPassword", "");
+
+  const validatePasswordMatch = (value) => {
+    return value === password || "Passwords do not match";
+  };
+
+
+
   return (
     <>
       {/* <div classNameName="flex h-screen items-center justify-center">
