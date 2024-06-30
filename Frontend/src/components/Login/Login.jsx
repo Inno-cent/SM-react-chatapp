@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import "./login.scss"
 
 function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  
   return (
     <>
       <div className="firstly flex h-screen items-center justify-center">
