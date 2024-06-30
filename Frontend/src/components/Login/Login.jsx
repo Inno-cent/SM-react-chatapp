@@ -1,18 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./login.scss"
+import "./login.scss";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    login(email, password);
+    console.log(formData);
+  };
   return (
     <>
       <div className="firstly flex h-screen items-center justify-center">
         <form className=" px-6 py-2  space-y-3 w-96">
-        
-          <h2 className="text-4xl text-white text-green-500 font-bold">Login</h2>
+          <h2 className="text-4xl text-white text-green-500 font-bold">
+            Login
+          </h2>
           <br />
 
           {/* Email */}
