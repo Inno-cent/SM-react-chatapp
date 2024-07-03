@@ -60,12 +60,12 @@ function Login() {
                 clipRule="evenodd"
               />
             </svg>
-            <input
+            {/* <input
               type="password"
               className="grow"
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
-            />
+            /> */}
           </label>
           {/* {errors.password && (
             <span className="text-red-500 text-sm font-semibold">
